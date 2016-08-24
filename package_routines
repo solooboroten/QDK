@@ -103,8 +103,11 @@
 # Define any package specific operations that shall be performed when
 # the package is removed.
 ######################################################################
-#PKG_PRE_REMOVE="{
-#}"
+PKG_PRE_REMOVE="{
+	if [ -x $SYS_INIT_DIR/$QPKG_SERVICE_PROGRAM ]; then
+		$SYS_INIT_DIR/$QPKG_SERVICE_PROGRAM restore
+	fi
+}"
 #
 #PKG_MAIN_REMOVE="{
 #}"
